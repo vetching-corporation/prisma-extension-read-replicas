@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/client/extension'
+import { PrismaClient } from '@vetching-corporation/prisma-client/extension'
 
 type PrismaConstructorOptions = {
   datasourceUrl?: string

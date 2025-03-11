@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/client'
+import { PrismaClient } from '@vetching-corporation/prisma-client'
 import { readReplicas } from '..'
 
 const client = new PrismaClient().$extends(readReplicas({ url: process.env.REPLICA_URL! }))

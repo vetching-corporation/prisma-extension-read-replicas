@@ -1,4 +1,4 @@
-import { Prisma, PrismaClient } from '@prisma/client/extension.js'
+import { Prisma, PrismaClient } from '@vetching-corporation/prisma-client/extension.js'
 
 import { ConfigureReplicaCallback, ReplicaManager, type ReplicaManagerOptions } from './ReplicaManager'
 

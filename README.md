@@ -1,4 +1,4 @@
-# @prisma/extension-read-replicas
+# @vetching-corporation/prisma-extension-read-replicas
 
 This [Prisma Client Extension](https://www.prisma.io/docs/concepts/components/prisma-client/client-extensions) adds read replica support to your Prisma Client. Under the hood, this extension creates additional Prisma Clients for the read replica database connection strings, and then routes read queries to these Clients instead of using the primary Prisma Client.
 
@@ -13,19 +13,19 @@ Depending on the package manager of your choice:
 ### `npm`
 
 ```sh
-npm install @prisma/extension-read-replicas
+npm install @vetching-corporation/prisma-extension-read-replicas
 ```
 
 ### `yarn`
 
 ```sh
-yarn add @prisma/extension-read-replicas
+yarn add @vetching-corporation/prisma-extension-read-replicas
 ```
 
 ### `pnpm`
 
 ```sh
-pnpm add @prisma/extension-read-replicas
+pnpm add @vetching-corporation/prisma-extension-read-replicas
 ```
 
 ## Usage
@@ -33,8 +33,8 @@ pnpm add @prisma/extension-read-replicas
 ### Initialization
 
 ```ts
-import { PrismaClient } from '@prisma/client'
-import { readReplicas } from '@prisma/extension-read-replicas'
+import { PrismaClient } from '@vetching-corporation/prisma-client'
+import { readReplicas } from '@vetching-corporation/prisma-extension-read-replicas'
 
 const prisma = new PrismaClient().$extends(
   readReplicas({
@@ -43,7 +43,7 @@ const prisma = new PrismaClient().$extends(
 )
 ```
 
-All non-transactional read queries will now be executed against the defined replica.  
+All non-transactional read queries will now be executed against the defined replica.
 Write queries and transactions will be executed against the primary server.
 
 **Note**: `queryRaw` and `executeRaw` are always executed against the primary server by default since
