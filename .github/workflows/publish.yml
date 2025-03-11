@@ -1,42 +1,53 @@
-name: Publish (latest)
-run-name: Publish ${{ github.event.release.tag_name }} to latest
+name: Publish to GitHub Packages
 
 on:
-  release:
-    types: [published]
+  push:
+    tags:
+      - v*
 
 jobs:
-  build:
-    name: Build and publish
-    runs-on: ubuntu-latest
+  deploy:
+    runs-on: ubuntu-24.04
     permissions:
-      # required for publishing to npm with --provenance
-      # see https://docs.npmjs.com/generating-provenance-statements
-      id-token: write
+      contents: read
+      packages: write
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-      - uses: pnpm/action-setup@v4
-        with:
-          version: 8
+      - name: Extract version from tag
+        run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_ENV
 
-      - uses: actions/setup-node@v4
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
         with:
-          registry-url: 'https://registry.npmjs.org'
-          node-version: 20
-          cache: 'pnpm'
+          version: 9
+          run_install: false
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@vetching-corporation'
 
       - name: Install dependencies
         run: pnpm install
 
-      - name: Version
-        run: pnpm version --no-git-tag-version ${{ github.event.release.tag_name }}
+      - name: Build dependencies
+        run: pnpm build
 
-      - name: Publish
+      - name: Update package name & version
         run: |
-          pnpm config set "//registry.npmjs.org/:_authToken" "${NPM_TOKEN}"
-          pnpm publish --access public --tag latest --no-git-checks
+          # 깃 태그에서 추출한 버전 값
+          echo "Target version: $VERSION"
+
+          # 버전 업데이트
+          jq --arg version "$VERSION" '.version = $version' package.json > tmp && mv tmp package.json
+
+      - name: Publish packages
         env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          # https://docs.npmjs.com/generating-provenance-statements
-          NPM_CONFIG_PROVENANCE: true
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Prisma cli 패키지 배포
+          pnpm publish --no-git-checks
