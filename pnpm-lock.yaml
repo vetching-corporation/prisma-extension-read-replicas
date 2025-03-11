@@ -739,19 +739,15 @@ packages:
     engines: {node: ^16.0.0 || >=18.0.0}
 
   '@vetching-corporation/prisma-cli@6.2.1':
-    resolution: {integrity: sha512-SEcWrpj6GWvmNWRXejZriN17sHdonXXma2jwUlgRPP4RO0ufcncgzuKXxHQJpisJ5uZKHuuo6AC1w6ClqIQhqw==, tarball: https://npm.pkg.github.com/download/@vetching-corporation/prisma-cli/6.2.1/1a0603070d011f03d92462dfa3fd9a2d2c279db1}
+    resolution: {integrity: sha512-RrC5fV5I5KhG+6QsmRfKwsL5y92d0XzBhQNvwFMWwgAdFUnFPFIVr5RHmZ3wHbZiepuQNQej4WZxuyaps5DmVw==, tarball: https://npm.pkg.github.com/download/@vetching-corporation/prisma-cli/6.2.1/ca2a0daf52dfba5ca32a7fd3e43aea52c16ee6ad}
     engines: {node: '>=18.18'}
     hasBin: true
 
   '@vetching-corporation/prisma-client@6.2.1':
-    resolution: {integrity: sha512-R1HFzh8KxqoGGlwkA6UuZB7xx3JzxTfQ7fYbAQ0Dor4zZXAeCvFpg+1Zaz9kH/BqellqjZF3kkVqyOBSxBZzlQ==, tarball: https://npm.pkg.github.com/download/@vetching-corporation/prisma-client/6.2.1/8c4be602af7e9c4cedf455e9659eafb7dba41329}
+    resolution: {integrity: sha512-7vkaLZmb5E6OiTWBXu6gjJkT86ZKSWKfr8o7BaXOuyOxbId7VSi4w6TfykHiggp+zYHKcoEZO+4hanDYUwQysg==, tarball: https://npm.pkg.github.com/download/@vetching-corporation/prisma-client/6.2.1/7ce55955679c27f7157ee3f6aa97ec5c7bc0ef3c}
     engines: {node: '>=18.18'}
     peerDependencies:
       '@vetching-corporation/prisma-cli': '*'
-      prisma: '*'
-    peerDependenciesMeta:
-      prisma:
-        optional: true
 
   acorn-jsx@5.3.2:
     resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}
@@ -1180,11 +1176,6 @@ packages:
 
   fs.realpath@1.0.0:
     resolution: {integrity: sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==}
-
-  fsevents@2.3.2:
-    resolution: {integrity: sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==}
-    engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
-    os: [darwin]
 
   fsevents@2.3.3:
     resolution: {integrity: sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==}
@@ -3053,7 +3044,7 @@ snapshots:
       normalize-path: 3.0.0
       readdirp: 3.6.0
     optionalDependencies:
-      fsevents: 2.3.2
+      fsevents: 2.3.3
 
   ci-info@3.8.0: {}
 
@@ -3353,9 +3344,6 @@ snapshots:
   flatted@3.2.7: {}
 
   fs.realpath@1.0.0: {}
-
-  fsevents@2.3.2:
-    optional: true
 
   fsevents@2.3.3:
     optional: true
@@ -4120,7 +4108,7 @@ snapshots:
 
   rollup@3.28.1:
     optionalDependencies:
-      fsevents: 2.3.2
+      fsevents: 2.3.3
 
   run-parallel@1.2.0:
     dependencies:
